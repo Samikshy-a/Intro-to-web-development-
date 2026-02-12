@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+
+}
+
+.card-id {
+  width: 390px;
+  background-color: white;
+  margin: 30px;
+  padding: 10px;
+  box-shadow: 5px 5px 10px gray;
+}
