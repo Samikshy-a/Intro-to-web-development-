@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgb(216, 199, 168); */
+    height: 100vh;
+
+}
+.box{
+    width: 200px;
+    flex: 1;
+    height: 200px;
+    background-color: lightpink;
+}
+.container :nth-child(odd){
+    background-color: bisque;
+
+}
