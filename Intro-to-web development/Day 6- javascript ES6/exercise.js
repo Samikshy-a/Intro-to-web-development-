@@ -1,35 +1,35 @@
-//* JavaScript ES6 Exercise
-
-// ============================================
 //* EXERCISE 1: Array Methods (push, pop, slice, splice)
-// ============================================
 
 // 1.1 Push and Pop
 const fruits = ['apple', 'banana'];
-// TODO: Add 'orange' to the end using push()
-// TODO: Remove the last fruit using pop() and store it in a variable called removedFruit
+fruits.push('orange');
+
+const removedFruit = fruits.pop();
+// fruits is now ['apple', 'banana']
+// removedFruit is 'orange'
 
 // 1.2 Slice vs Splice
 const numbers = [1, 2, 3, 4, 5];
-// TODO: Use slice() to get [2, 3, 4]
-// TODO: Use splice() to remove 2 and 3, and insert 'two' and 'three' in their place
 
-// ============================================
+const slicedNumbers = numbers.slice(1, 4);
+// [2, 3, 4]
+
+numbers.splice(1, 2, 'two', 'three');
+// numbers is now [1, 'two', 'three', 4, 5]
+
+
 //* EXERCISE 2: Arrow Functions
-// ============================================
 
-// 2.1 Convert to arrow function and console.log using template literals
-function greet(name) {
-  console.log('hello ' + name);
-}
-// TODO: Rewrite greet as an arrow function and use template literals to log the greeting message
+// 2.1 Arrow function with template literals
+const greet = (name) => {
+  console.log(`hello ${name}`);
+};
 
 // 2.2 Arrow function with multiple parameters
-// TODO: Create an arrow function that adds two numbers
+const add = (a, b) => a + b;
 
-// ============================================
+
 //* EXERCISE 3: Map
-// ============================================
 
 const students = [
   { name: 'Alice', score: 85 },
@@ -37,11 +37,11 @@ const students = [
   { name: 'Charlie', score: 78 },
 ];
 
-// TODO: Use map() to extract only the names
+const studentNames = students.map(student => student.name);
+// ['Alice', 'Bob', 'Charlie']
 
-// ============================================
+
 //* EXERCISE 4: Filter
-// ============================================
 
 const products = [
   { name: 'Laptop', price: 1200 },
@@ -50,28 +50,30 @@ const products = [
   { name: 'Keyboard', price: 80 },
 ];
 
-// TODO: Filter products that cost less than $100
+const affordableProducts = products.filter(product => product.price < 100);
+// Mouse and Keyboard
 
-// ============================================
+
 //* EXERCISE 5: Reduce
-// ============================================
 
 const prices = [10, 20, 30, 40];
 
-// TODO: Use reduce() to find largest price
+const largestPrice = prices.reduce((max, current) =>
+  current > max ? current : max
+);
+// 40
 
-// ============================================
+
 //* EXERCISE 6: Array Destructuring
-// ============================================
 
 const colors = ['red', 'green', 'blue'];
-// TODO: Destructure to get first and second colors
 
-console.log(firstColor);
+const [firstColor, secondColor] = colors;
+// firstColor = 'red'
+// secondColor = 'green'
 
-// ============================================
+
 //* EXERCISE 7: Object Destructuring
-// ============================================
 
 const person = {
   firstName: 'John',
@@ -80,13 +82,17 @@ const person = {
   city: 'New York',
 };
 
-// TODO: Destructure to get firstName and age
-// TODO: Destructure with renaming: firstName as 'first'
-// TODO: Destructure with default values
+// Basic destructuring
+const { firstName, age } = person;
 
-// ============================================
+// Renaming
+const { firstName: first } = person;
+
+// Default values
+const { country = 'USA' } = person;
+
+
 //* CHALLENGE: Combine Everything
-// ============================================
 
 const employees = [
   { id: 1, name: 'Alice', department: 'IT', salary: 75000 },
@@ -95,7 +101,15 @@ const employees = [
   { id: 4, name: 'Diana', department: 'Finance', salary: 70000 },
 ];
 
-// TODO: Filter IT department employees
-// TODO: Map to get only name and salary
-// TODO: Use reduce to calculate average IT salary
-// TODO: Destructure the first employee's name and salary
+// Filter IT employees
+const itEmployees = employees.filter(emp => emp.department === 'IT');
+
+// Map to name and salary
+const itNameSalary = itEmployees.map(({ name, salary }) => ({ name, salary }));
+
+// Reduce to average salary
+const averageITSalary =
+  itEmployees.reduce((total, emp) => total + emp.salary, 0) / itEmployees.length;
+
+// Destructure first IT employee
+const [{ name: firstITName, salary: firstITSalary }] = itEmployees;
